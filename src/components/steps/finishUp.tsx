@@ -1,13 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
+import { setStep } from "../controls/controlsSlice";
 import { ADDONS_PRICES, PLAN_PRICES } from "./constants/prices";
 import {
   SelectBillingPlan,
   selectBillingPlan,
   selectCheckedAddons,
   selectPlanOption,
-  setStep,
 } from "./stepsSlice";
 import { SelectAddons } from "./types/pickAddons";
+import StepContainer from "./UI/stepContainer";
+import StepDescription from "./UI/stepDescription";
+import StepHeading from "./UI/stepHeading";
 import { calculateTotalPrice } from "./utils/calculateTotalPrice";
 
 export type CheckedAddons = [
@@ -31,11 +34,11 @@ const FinishUp = () => {
     selectedPlan === SelectBillingPlan.yearly ? "year" : "month";
 
   return (
-    <div className="p-6 gap-2 flex flex-col">
-      <h2 className="text-marine-blue font-bold text-2xl">Finishing up</h2>
-      <p className="text-cool-gray">
+    <StepContainer>
+      <StepHeading>Finishing up</StepHeading>
+      <StepDescription>
         Double-check everything looks OK before confirming.
-      </p>
+      </StepDescription>
 
       <div className="bg-magnolia p-6 rounded-lg gap-4 flex flex-col mt-4">
         <div className="border-b border-b-light-gray">
@@ -67,7 +70,7 @@ const FinishUp = () => {
         <p className="text-cool-gray">Total (per {billingStr})</p>
         <p className="text-purplish-blue font-bold">{totalPrice}</p>
       </div>
-    </div>
+    </StepContainer>
   );
 };
 

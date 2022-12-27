@@ -1,9 +1,11 @@
+import controlsReducer from "../components/controls/controlsSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import stepsReducer from "../components/steps/stepsSlice";
 
 export const store = configureStore({
   reducer: {
     steps: stepsReducer,
+    controls: controlsReducer,
   },
 });
 

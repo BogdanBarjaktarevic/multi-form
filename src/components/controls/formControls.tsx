@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import useSteps from "../hooks/useSteps";
+import useSteps from "../../hooks/useSteps";
 import {
+  selectActiveStep,
+  prevStep,
   completeForm,
   nextStep,
-  prevStep,
-  selectActiveStep,
-} from "./steps/stepsSlice";
+} from "./controlsSlice";
 
 const FormControls = () => {
   const dispatch = useDispatch();

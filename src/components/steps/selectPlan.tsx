@@ -10,6 +10,9 @@ import {
   setPlanOption,
 } from "./stepsSlice";
 import ToggleBillingPlan from "./toggleBillingPlan";
+import StepHeading from "./UI/stepHeading";
+import StepDescription from "./UI/stepDescription";
+import StepContainer from "./UI/stepContainer";
 
 interface OptionProps {
   icon: string;
@@ -73,11 +76,11 @@ const SelectPlan = () => {
   };
 
   return (
-    <div className="p-6 gap-2 flex flex-col">
-      <h2 className="text-marine-blue font-bold text-2xl">Select your plan</h2>
-      <p className="text-cool-gray">
+    <StepContainer>
+      <StepHeading>Select your plan</StepHeading>
+      <StepDescription>
         You have the option of monthly or yearly billing.
-      </p>
+      </StepDescription>
       <Option
         icon={ArcadeLogo}
         optionName="Arcade"
@@ -103,7 +106,7 @@ const SelectPlan = () => {
         plan={selectedPlan}
       />
       <ToggleBillingPlan />
-    </div>
+    </StepContainer>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import useSteps from "../hooks/useSteps";
-import { selectActiveStep } from "./steps/stepsSlice";
+import useSteps from "../../hooks/useSteps";
+import { selectActiveStep } from "./controlsSlice";
 
 const FormNavigation = () => {
   const { totalSteps } = useSteps();
@@ -21,19 +21,6 @@ const FormNavigation = () => {
           <span>{step}</span>
         </div>
       ))}
-
-      {/* <div className="border-2 rounded-full h-10 w-10 flex items-center justify-center text-marine-blue bg-light-blue border-light-blue font-medium">
-        <span>1</span>
-      </div>
-      <div className="border-2 rounded-full h-10 w-10 flex items-center justify-center text-white">
-        <span>2</span>
-      </div>
-      <div className="border-2 rounded-full h-10 w-10 flex items-center justify-center text-white">
-        <span>3</span>
-      </div>
-      <div className="border-2 rounded-full h-10 w-10 flex items-center justify-center text-white">
-        <span>4</span>
-      </div> */}
     </div>
   );
 };

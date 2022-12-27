@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setPersonalInfoData, selectPersonalInfoData } from "./stepsSlice";
+import StepContainer from "./UI/stepContainer";
+import StepDescription from "./UI/stepDescription";
+import StepHeading from "./UI/stepHeading";
 
 interface InputProps {
   name: string;
@@ -41,11 +44,11 @@ const PersonalInfo = () => {
   };
 
   return (
-    <div className="p-6 gap-2 flex flex-col">
-      <h2 className="text-marine-blue font-bold text-2xl">Personal info</h2>
-      <p className="text-cool-gray">
+    <StepContainer>
+      <StepHeading>Personal info</StepHeading>
+      <StepDescription>
         Please provide your name, email, address, and the phone number.
-      </p>
+      </StepDescription>
       <Input
         name="name"
         value={name}
@@ -67,7 +70,7 @@ const PersonalInfo = () => {
         placeholder="e.g. +1 234 567 890"
         label="Phone Number"
       />
-    </div>
+    </StepContainer>
   );
 };
 

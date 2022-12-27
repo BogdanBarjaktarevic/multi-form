@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { checkAddon, selectAddons, selectBillingPlan } from "./stepsSlice";
 import { SelectAddons } from "./types/pickAddons";
+import StepContainer from "./UI/stepContainer";
+import StepDescription from "./UI/stepDescription";
+import StepHeading from "./UI/stepHeading";
 
 interface OptionProps {
   optionName: string;
@@ -39,7 +42,7 @@ const Option = ({
         name={name}
         onChange={handleOnChange}
       />
-      <div>
+      <div className="flex-1">
         <h3 className="text-marine-blue font-medium">{optionName}</h3>
         <p className="text-cool-gray text-sm">{optionDescription}</p>
       </div>
@@ -66,11 +69,11 @@ const PickAddons = () => {
   };
 
   return (
-    <div className="p-6 gap-2 flex flex-col">
-      <h2 className="text-marine-blue font-bold text-2xl">Pick add-ons</h2>
-      <p className="text-cool-gray">
+    <StepContainer>
+      <StepHeading>Pick add-ons</StepHeading>
+      <StepDescription>
         Add-ons help enchance your gaming experience.
-      </p>
+      </StepDescription>
 
       <Option
         optionName={addons[SelectAddons.service].addonName}
@@ -93,7 +96,7 @@ const PickAddons = () => {
         selected={!!addons[SelectAddons.profile].value}
         name={SelectAddons.profile}
       />
-    </div>
+    </StepContainer>
   );
 };
 

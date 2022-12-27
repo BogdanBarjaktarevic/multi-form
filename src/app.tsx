@@ -1,12 +1,11 @@
 import { useSelector } from "react-redux";
-import { RootState } from "./app/store";
-import FormControls from "./components/formControls";
-import FormNavigation from "./components/formNavigation";
-import FormCompleted from "./components/steps/formCompleted";
 import {
   selectActiveStep,
   selectFormStatus,
-} from "./components/steps/stepsSlice";
+} from "./components/controls/controlsSlice";
+import FormControls from "./components/controls/formControls";
+import FormNavigation from "./components/controls/formNavigation";
+import FormCompleted from "./components/steps/formCompleted";
 import useSteps from "./hooks/useSteps";
 
 const App = () => {

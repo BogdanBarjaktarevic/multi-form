@@ -21,10 +21,10 @@ export enum StepsEnum {
   finishUp,
 }
 
+export type ActiveStep = keyof typeof initialState.steps;
+
 export interface StepsState {
-  activeStep: keyof typeof initialState.steps;
   billingPlan: SelectBillingPlan;
-  formCompleted: boolean;
   steps: {
     [StepsEnum.personalInfo]: {
       data: { name: string; email: string; phone: string };
@@ -44,9 +44,7 @@ export interface StepsState {
 }
 
 const initialState: StepsState = {
-  activeStep: StepsEnum.personalInfo,
   billingPlan: SelectBillingPlan.monthly,
-  formCompleted: false,
   steps: {
     [StepsEnum.personalInfo]: { data: { name: "", email: "", phone: "" } },
     [StepsEnum.selectPlan]: {
@@ -71,12 +69,6 @@ export const stepsSlice = createSlice({
   name: "steps",
   initialState,
   reducers: {
-    nextStep: (state) => {
-      state.activeStep += 1;
-    },
-    prevStep: (state) => {
-      state.activeStep -= 1;
-    },
     setPersonalInfoData: (
       state,
       action: PayloadAction<PersonalInfoActionPayload>
@@ -95,27 +87,14 @@ export const stepsSlice = createSlice({
       state.steps[StepsEnum.pickAddons].data[key].value =
         !state.steps[StepsEnum.pickAddons].data[key].value;
     },
-    setStep: (
-      state,
-      action: PayloadAction<keyof typeof initialState.steps>
-    ) => {
-      state.activeStep = action.payload;
-    },
-    completeForm: (state) => {
-      state.formCompleted = true;
-    },
   },
 });
 
 export const {
-  nextStep,
-  prevStep,
   setPersonalInfoData,
   setPlanOption,
   setBillingPlan,
   checkAddon,
-  setStep,
-  completeForm,
 } = stepsSlice.actions;
 
 export const selectPersonalInfoData = (state: RootState): PersonalInfoData =>
@@ -135,12 +114,5 @@ export const selectCheckedAddons = (state: RootState) => {
     ([, addon]) => addon.value
   );
 };
-
-export const selectActiveStep = (
-  state: RootState
-): keyof typeof initialState.steps => state.steps.activeStep;
-
-export const selectFormStatus = (state: RootState): boolean =>
-  state.steps.formCompleted;
 
 export default stepsSlice.reducer;

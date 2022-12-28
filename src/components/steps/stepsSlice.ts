@@ -8,6 +8,7 @@ import {
   PersonalInfoActionPayload,
 } from "./types/personalInfo";
 import { SelectPlanOption } from "./types/selectPlan";
+import { resetForm } from "../controls/controlsSlice";
 
 export enum SelectBillingPlan {
   monthly = "monthly",
@@ -87,6 +88,9 @@ export const stepsSlice = createSlice({
       state.steps[StepsEnum.pickAddons].data[key].value =
         !state.steps[StepsEnum.pickAddons].data[key].value;
     },
+  },
+  extraReducers(builder) {
+    builder.addCase(resetForm, () => initialState);
   },
 });
 

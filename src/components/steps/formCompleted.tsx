@@ -1,6 +1,11 @@
+import { useDispatch } from "react-redux";
 import ThankYouIcon from "../../assets/icon-thank-you.svg";
+import ControlButton from "../controls/controlButton";
+import { resetForm } from "../controls/controlsSlice";
 
 const FormCompleted = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="px-6 py-20 flex flex-col justify-center items-center gap-6">
       <div>
@@ -14,6 +19,9 @@ const FormCompleted = () => {
           at support@loremgaming.com
         </p>
       </div>
+      <ControlButton onClick={() => dispatch(resetForm())}>
+        New Plan
+      </ControlButton>
     </div>
   );
 };

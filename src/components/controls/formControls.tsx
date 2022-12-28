@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import useSteps from "../../hooks/useSteps";
+import ControlButton from "./controlButton";
 import {
   selectActiveStep,
   prevStep,
@@ -12,11 +13,12 @@ const FormControls = () => {
   const activeStep = useSelector(selectActiveStep);
   const { totalSteps } = useSteps();
   const lastStep = activeStep === totalSteps;
+  const shouldShowGoBack = activeStep > 1;
 
   return (
     <div className="bg-alabaster text-white flex justify-between items-center p-4 shadow-md font-medium">
       <div>
-        {activeStep > 1 && (
+        {shouldShowGoBack && (
           <p className="text-cool-gray" onClick={() => dispatch(prevStep())}>
             Go Back
           </p>
@@ -24,19 +26,13 @@ const FormControls = () => {
       </div>
       <div>
         {lastStep ? (
-          <button
-            className="px-4 py-3 bg-marine-blue rounded-md"
-            onClick={() => dispatch(completeForm())}
-          >
+          <ControlButton onClick={() => dispatch(completeForm())}>
             Confirm
-          </button>
+          </ControlButton>
         ) : (
-          <button
-            className="px-4 py-3 bg-marine-blue rounded-md"
-            onClick={() => dispatch(nextStep())}
-          >
+          <ControlButton onClick={() => dispatch(nextStep())}>
             Next Step
-          </button>
+          </ControlButton>
         )}
       </div>
     </div>

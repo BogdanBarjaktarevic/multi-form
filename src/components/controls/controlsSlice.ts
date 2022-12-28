@@ -29,10 +29,11 @@ export const controlsSlice = createSlice({
     completeForm: (state) => {
       state.formCompleted = true;
     },
+    resetForm: () => initialState,
   },
 });
 
-export const { nextStep, prevStep, setStep, completeForm } =
+export const { nextStep, prevStep, setStep, completeForm, resetForm } =
   controlsSlice.actions;
 
 export const selectActiveStep = (state: RootState): ActiveStep =>

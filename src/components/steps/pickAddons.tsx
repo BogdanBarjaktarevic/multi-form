@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { ADDONS_PRICES } from "./constants/prices";
 import { checkAddon, selectAddons, selectBillingPlan } from "./stepsSlice";
 import { SelectAddons } from "./types/pickAddons";
 import StepContainer from "./UI/stepContainer";
@@ -55,19 +56,6 @@ const PickAddons = () => {
   const addons = useSelector(selectAddons);
   const selectedPlan = useSelector(selectBillingPlan);
 
-  const PRICES = {
-    monthly: {
-      service: "$1/mo",
-      storage: "$2/mo",
-      profile: "$5/mo",
-    },
-    yearly: {
-      service: "$10/yr",
-      storage: "$20/yr",
-      profile: "$20/yr",
-    },
-  };
-
   return (
     <StepContainer>
       <StepHeading>Pick add-ons</StepHeading>
@@ -78,21 +66,21 @@ const PickAddons = () => {
       <Option
         optionName={addons[SelectAddons.service].addonName}
         optionDescription="Access to multiplayer games"
-        price={PRICES[selectedPlan][SelectAddons.service]}
+        price={ADDONS_PRICES[selectedPlan][SelectAddons.service]}
         selected={!!addons[SelectAddons.service].value}
         name={SelectAddons.service}
       />
       <Option
         optionName={addons[SelectAddons.storage].addonName}
         optionDescription="Extra 1TB of cloud save"
-        price={PRICES[selectedPlan][SelectAddons.storage]}
+        price={ADDONS_PRICES[selectedPlan][SelectAddons.storage]}
         selected={!!addons[SelectAddons.storage].value}
         name={SelectAddons.storage}
       />
       <Option
         optionName={addons[SelectAddons.profile].addonName}
         optionDescription="Custom theme on your profile"
-        price={PRICES[selectedPlan][SelectAddons.profile]}
+        price={ADDONS_PRICES[selectedPlan][SelectAddons.profile]}
         selected={!!addons[SelectAddons.profile].value}
         name={SelectAddons.profile}
       />

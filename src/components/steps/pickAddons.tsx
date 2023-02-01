@@ -38,7 +38,7 @@ const Option = ({
     >
       <input
         type="checkbox"
-        className="w-6 h-6 accent-purplish-blue"
+        className="w-6 h-6 accent-purplish-blue md:cursor-pointer"
         checked={selected}
         name={name}
         onChange={handleOnChange}

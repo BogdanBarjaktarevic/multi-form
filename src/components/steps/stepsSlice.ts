@@ -41,6 +41,7 @@ export interface StepsState {
         };
       };
     };
+    [StepsEnum.finishUp]: {};
   };
 }
 
@@ -63,6 +64,7 @@ const initialState: StepsState = {
         [SelectAddons.storage]: { addonName: "Larger storage", value: false },
       },
     },
+    [StepsEnum.finishUp]: {},
   },
 };
 

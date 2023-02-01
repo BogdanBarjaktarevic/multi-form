@@ -16,10 +16,13 @@ const FormControls = () => {
   const shouldShowGoBack = activeStep > 1;
 
   return (
-    <div className="bg-alabaster text-white flex justify-between items-center p-4 shadow-md font-medium">
+    <div className="bg-alabaster text-white flex justify-between items-center p-4 shadow-md font-medium md:bg-white md:shadow-none md:ml-9">
       <div>
         {shouldShowGoBack && (
-          <p className="text-cool-gray" onClick={() => dispatch(prevStep())}>
+          <p
+            className="text-cool-gray md:cursor-pointer"
+            onClick={() => dispatch(prevStep())}
+          >
             Go Back
           </p>
         )}

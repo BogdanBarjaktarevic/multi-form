@@ -12,9 +12,16 @@ const useSteps = () => {
     [StepsEnum.finishUp]: FinishUp,
   };
 
+  const stepNames = {
+    [StepsEnum.personalInfo]: "Your Info",
+    [StepsEnum.selectPlan]: "Select Plan",
+    [StepsEnum.pickAddons]: "Add-ons",
+    [StepsEnum.finishUp]: "Summary",
+  };
+
   const totalSteps = Object.keys(steps).length;
 
-  return { steps, totalSteps };
+  return { steps, totalSteps, stepNames };
 };
 
 export default useSteps;

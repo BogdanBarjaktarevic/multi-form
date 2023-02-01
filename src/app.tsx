@@ -17,16 +17,20 @@ const App = () => {
   const StepComponent = steps[activeStep];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="bg-side-bar-mobile bg-cover bg-no-repeat h-[172px] pt-10">
-        <FormNavigation />
-      </div>
-      <main className="bg-magnolia flex-1 p-4">
-        <div className="bg-alabaster shadow-lg rounded-lg -translate-y-16">
-          {isFormCompleted ? <FormCompleted /> : <StepComponent />}
+    <div className="md:flex md:justify-center md:items-center md:min-h-screen md:bg-magnolia">
+      <div className="flex flex-col min-h-screen md:flex-row md:min-h-0 md:container md:bg-white md:p-4 md:rounded-lg md:h-[600px] md:max-w-5xl">
+        <div className="bg-side-bar-mobile bg-cover bg-no-repeat h-[172px] pt-10 md:bg-side-bar-desktop md:h-auto md:w-[274px] md:bg-cover md:rounded-md">
+          <FormNavigation />
         </div>
-      </main>
-      <div>{isFormCompleted ? null : <FormControls />}</div>
+        <main className="bg-magnolia flex-1 flex flex-col md:bg-white">
+          <div className="bg-alabaster shadow-lg rounded-lg -translate-y-16 md:translate-y-0 m-4 md:bg-white md:shadow-none">
+            {isFormCompleted ? <FormCompleted /> : <StepComponent />}
+          </div>
+          <div className="flex flex-col justify-end flex-1">
+            {isFormCompleted ? null : <FormControls />}
+          </div>
+        </main>
+      </div>
     </div>
   );
 };

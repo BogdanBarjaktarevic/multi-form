@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "side-bar-mobile": "url('./src/assets/bg-sidebar-mobile.svg')",
+        "side-bar-desktop": "url('./src/assets/bg-sidebar-desktop.svg')",
       },
       fontFamily: {
         sans: ["Ubuntu", "sans-serif"],

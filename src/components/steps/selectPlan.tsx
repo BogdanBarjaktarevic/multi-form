@@ -37,7 +37,7 @@ const Option = ({
 
   return (
     <div
-      className={`flex gap-4 border  p-4 rounded-lg ${
+      className={`flex gap-4 border  p-4 rounded-lg md:cursor-pointer ${
         selected ? selectedClasses : nonSelectedClasses
       }`}
       onClick={onClick}
